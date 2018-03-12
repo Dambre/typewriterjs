@@ -107,6 +107,11 @@
 
 	var TypewriterPrototype = window.Typewriter.prototype;
 
+	TypewriterPrototype.func = function(func){
+    	this._addToEventQue([this._func, [func]])
+    	return this
+  	};
+
 	TypewriterPrototype.stop = function() {
 		this._addToEventQue(this._stopEventLoop)
 		return this;
@@ -175,6 +180,11 @@
 
 		return this;
 
+	};
+
+	TypewriterPrototype._func = function(func){
+	    func();
+	    return this;
 	};
 
 	TypewriterPrototype.changeBlinkSpeed = function(new_speed) {
